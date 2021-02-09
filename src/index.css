@@ -11,3 +11,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.danger-text {
+  color: rgb(230, 49, 49);
+  margin-bottom: 10px;
+}

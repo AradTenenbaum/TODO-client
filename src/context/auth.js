@@ -1,5 +1,7 @@
 import React, {createContext, useReducer} from 'react';
 import jwtDecode from 'jwt-decode';
+import * as api from '../api';
+
 
 const initialState = {
     user: null
@@ -41,12 +43,18 @@ function authReducer(state, action){
 function AuthProvider(props) {
     const [state, dispatch] = useReducer(authReducer, initialState);
 
-    function login(userData){
-        localStorage.setItem("jwtToken", userData.token);
-        dispatch({
-            type: 'LOGIN',
-            payload: userData
-        });
+    async function login(userData){
+        try {
+            const {data} = await api.login(userData); 
+            localStorage.setItem("jwtToken", data.token);
+            dispatch({
+                type: 'LOGIN',
+                payload: userData
+            });
+        } catch (error) {
+            console.log(error);
+            return error;
+        }
     }
 
     function logout(){
