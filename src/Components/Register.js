@@ -13,7 +13,7 @@ function Register() {
   useEffect(() => {
       if(context.user) history.push('/');
   }, []);
-  console.log(context.user);
+
 
   const registerUserCallback = () => {
     registerApi();

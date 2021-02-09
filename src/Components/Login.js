@@ -30,7 +30,6 @@ function Login() {
     }
   };
 
-  console.log(context.user);
 
   return (
     <div>
