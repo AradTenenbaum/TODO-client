@@ -9,7 +9,7 @@ function Login() {
   const [isError, setIsError] = useState(false);
   const history = useHistory();
   useEffect(() => {
-      if(context.user.username) history.push('/');
+      if(context.user) history.push('/');
   }, []);
 
   const loginUserCallback = () => {
