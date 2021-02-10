@@ -10,7 +10,7 @@ function Login() {
   const history = useHistory();
   useEffect(() => {
       if(context.user) history.push('/');
-  }, []);
+  }, [context.user]);
 
   const loginUserCallback = () => {
     loginApi();
@@ -26,7 +26,6 @@ function Login() {
     if (err) setIsError(true);
     else {
       setIsError(false);
-      history.push('/');
     }
   };
 

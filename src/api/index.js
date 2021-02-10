@@ -7,23 +7,7 @@ export const register = (newUser) => axios.post(`${url}/user/register`, newUser)
 export const login = (userDetails) => axios.post(`${url}/user/login`, userDetails);
 
 // Tasks http requests
-export const fetchTasks = (username, token) => axios.get(`${url}/task/tasks`, username, {
-    headers: {
-        'auth-token': token
-    }
-});
-export const addTask = (username, token) => axios.post(`${url}/task/add`, username, {
-    headers: {
-        'auth-token': token
-    }
-});
-export const deleteTask = (id, token) => axios.delete(`${url}/task/delete/${id}`, {
-    headers: {
-        'auth-token': token
-    }
-});
-export const changeTask = (id, token) => axios.patch(`${url}/task/finish/${id}`, {
-    headers: {
-        'auth-token': token
-    }
-});
+export const fetchTasks = (token) => axios({ method: 'get', url: `${url}/task/tasks`, headers: { 'auth-token': token } });
+export const addTask = (username, text, token) => axios({ method: 'post', url: `${url}/task/add`, data: { username, text} , headers: { 'auth-token': token } });
+export const deleteTask = (id, token) => axios({ method: 'delete', url: `${url}/task/delete/${id}`, headers: { 'auth-token': token } });
+export const changeTask = (id, token) => axios({ method: 'patch', url: `${url}/task/finish/${id}`, headers: { 'auth-token': token } });

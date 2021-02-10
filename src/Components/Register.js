@@ -12,7 +12,7 @@ function Register() {
   const history = useHistory();
   useEffect(() => {
       if(context.user) history.push('/');
-  }, []);
+  }, [context.user]);
 
 
   const registerUserCallback = () => {

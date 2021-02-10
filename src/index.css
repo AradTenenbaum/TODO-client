@@ -16,3 +16,111 @@ code {
   color: rgb(230, 49, 49);
   margin-bottom: 10px;
 }
+
+.styling {
+  font-weight: 800;
+  color: rgb(0, 119, 255);
+}
+
+.add-button {
+  height: 50px;
+  width: 50px;
+  border-radius: 25px;
+  outline: none;
+  border: none;
+  background-color: rgb(0, 119, 255);
+  color: #fff;
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0.25rem;
+  cursor: pointer;
+}
+
+.input-div {
+  display: flex;
+  /* put on center */
+  justify-content: center; 
+  align-items: center;
+  text-align: center;
+}
+
+
+.input-div .input {
+  padding: 0.5rem 1rem;
+  height: 50px;
+  color: #fff;
+  outline: none;
+  border: none;
+  background-color: rgb(0, 119, 255);
+  width: 70%;
+  font-size: 1.15rem;
+  margin: 0.25rem;
+  border-radius: 25px;
+}
+
+
+.add-button:hover {
+  opacity: 0.7;
+}
+
+.input-div ::placeholder { 
+  color: white;
+
+}
+
+.todo-nav {
+  margin-top: 10px
+}
+
+.todo-list {
+  width: 70%;
+  margin: 10px 0
+}
+
+.todo-list .todo-item {
+  padding: 15px;
+  margin: 5px 0;
+  border-radius: 15px;
+  background: #f7f7f7
+}
+
+.todo-item {
+  display: flex;
+  padding-bottom: 10px;
+  justify-content: space-between;
+}
+
+
+.my-list {
+  display: flex;
+  /* put on center */
+  justify-content: center; 
+  align-items: center;
+  text-align: center;
+}
+
+.my-item-text {
+  padding-left: 30px;
+  font-size: 1.3em;
+}
+
+.check {
+  height: 30px;
+  width: 30px;
+}
+
+.delete-in-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: red;
+  border-radius: 10px;
+  height: 40px;
+  width: 40px;
+}
+
+.delete-but {
+  height: 30px;
+  width: 30px;
+  color: #fff;
+}

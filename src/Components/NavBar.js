@@ -12,13 +12,28 @@ function NavBar() {
   }, [context.user]);
 
   const logingOut = () => {
-    context.logout()
-  }
-
+    setIsUser(false);
+    context.logout();
+  };
   const logNav = isUser ? (
     <ul className="navbar-nav ml-auto">
       <li className="nav-item active">
-        <Link onClick={logingOut} className="nav-link" aria-current="page" to="/login">
+      <Link
+          className="nav-link"
+          aria-current="page"
+          to="/"
+        >
+          {context.user.username}
+        </Link>
+        
+      </li>
+      <li className="nav-item active">
+        <Link
+          onClick={logingOut}
+          className="nav-link"
+          aria-current="page"
+          to="/login"
+        >
           Logout
         </Link>
       </li>
@@ -44,9 +59,7 @@ function NavBar() {
         <Link className="navbar-brand" to="/">
           ToDoApp
         </Link>
-        <div className="collapse navbar-collapse">
-          {logNav}
-        </div>
+        <div className="collapse navbar-collapse">{logNav}</div>
       </div>
     </nav>
   );
