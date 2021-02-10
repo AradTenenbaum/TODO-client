@@ -29,6 +29,7 @@ function Register() {
       passwordAgain: ""
     });
 
+    // register request and login to get a token
     const registerApi = async () => {
       if(values.password === values.passwordAgain) {
         const user = {

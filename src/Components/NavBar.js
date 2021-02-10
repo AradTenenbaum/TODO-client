@@ -11,6 +11,7 @@ function NavBar() {
     else setIsUser(false);
   }, [context.user]);
 
+  // delete token and user
   const logingOut = () => {
     setIsUser(false);
     context.logout();

@@ -5,7 +5,7 @@ import { AuthContext } from "../context/auth";
 import { useForm } from "../Hooks/useForm";
 import * as api from "../api";
 import ItemsList from "./ItemsList";
-import { UNDONE } from "../constants/taskStatus";
+import { DONE, UNDONE } from "../constants/taskStatus";
 
 function TasksPage() {
   const context = useContext(AuthContext);
@@ -22,17 +22,16 @@ function TasksPage() {
     taskText: "",
   });
 
-//   Compare for sort by done and undone
-function compare( a, b ) {
-    if ( a.status > b.status ){
+  //   Compare for sort by done and undone
+  function compare(a, b) {
+    if (a.status > b.status) {
       return -1;
     }
-    if ( a.status < b.status ){
+    if (a.status < b.status) {
       return 1;
     }
     return 0;
   }
-  
 
   //   Api fetch
   const fetchData = async () => {
@@ -50,6 +49,7 @@ function compare( a, b ) {
   //   Add task
   const addTask = async (e) => {
     e.preventDefault();
+    // add to db
     if (values.taskText.length > 0) {
       const token = localStorage.getItem("jwtToken");
       const addedTaskId = await api.addTask(
@@ -57,7 +57,7 @@ function compare( a, b ) {
         values.taskText,
         token
       );
-      console.log(addedTaskId.data);
+    //   add to state
       let tempTasks = tasks;
       tempTasks.push({
         task_id: addedTaskId.data.task_id,
@@ -69,6 +69,21 @@ function compare( a, b ) {
       setTasks([...tempTasks]);
       Clear();
     }
+  };
+
+  const deleteAllDone = async () => {
+    const token = localStorage.getItem("jwtToken");
+    let tempTasks = [];
+    tasks.map(async (task) => {
+        if(task.status === DONE) {
+            // delete from db
+            await api.deleteTask(task.task_id, token);
+        } else {
+            // add to state
+            tempTasks.push(task);
+        }
+    });
+    setTasks([...tempTasks]);
   };
 
   return (
@@ -93,6 +108,18 @@ function compare( a, b ) {
           </button>
         </div>
       </form>
+      <div className="btn-group my-buttons" role="group" aria-label="Basic example">
+        <button type="button" className="btn btn-primary" onClick={() => {
+            let tempTasks = tasks;
+            tempTasks.sort(compare);
+            setTasks([...tempTasks]);
+        }}>
+          Sort by status
+        </button>
+        <button type="button" className="btn btn-danger" onClick={deleteAllDone}>
+          Delete done tasks
+        </button>
+      </div>
       {tasks ? <ItemsList items={tasks} setTasks={setTasks} /> : <div></div>}
     </div>
   );

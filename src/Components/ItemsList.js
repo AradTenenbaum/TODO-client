@@ -64,8 +64,6 @@ function ItemsList({ items, setTasks }) {
                             break;
                         }
                     }
-                    console.log(tempTasks);
-                    console.log(i);
                         tempTasks.splice(i, 1);
                     setTasks([...tempTasks]);
                 }}>

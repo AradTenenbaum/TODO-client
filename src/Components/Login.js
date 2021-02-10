@@ -21,6 +21,7 @@ function Login() {
     password: "",
   });
 
+  // login and create a token
   const loginApi = async () => {
     const err = await context.login(values);
     if (err) setIsError(true);

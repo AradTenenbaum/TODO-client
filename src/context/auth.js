@@ -7,6 +7,7 @@ const initialState = {
     user: null
 };
 
+// If token is saved on local storage there is a user
 if(localStorage.getItem("jwtToken")){
     const decodedToken = jwtDecode(localStorage.getItem("jwtToken"));
     if(decodedToken.exp * 1000 < Date.now()){
